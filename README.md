@@ -81,4 +81,3 @@ TODO
 4. Add support for path like, 'user.*.state'.
 5. Remove "lodash.set" dependency.
 6. Add benchmarks.
-7. Update computed values, like fullName.

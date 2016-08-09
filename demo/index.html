@@ -10,12 +10,13 @@
   <body>
     <div class="wrapper">
       FirstName: <b class="first-name"></b><br>
+      FirstName (other className): <b class="first-name-2"></b><br>
       LastName: <b class="last-name"></b><br>
       FullName: <b class="full-name"></b><br>
       Salary: <b class="salary"></b><br>
       Favorite skill: <b class="skill-favorite"></b><br>
+      About: <p class="about"></p><br>
 
-      <br><br>
       <section>
         <label for="firstName">
           FirstName:
@@ -26,9 +27,18 @@
           LastName:
           <input id="lastName" type="text" class="last-name">
         </label>
+        <br>
         <label for="salary">
-          LastName:
-          <input id="salary" type="text" class="salary">
+          Salary:
+          <input id="salary" type="text" class="salary"><br>
+          <input type="number" class="salary"><br>
+          <input class="salary" type="range" min="0" max="10000"><br>
+          <progress class="salary" min="0" max="10000"></progress><br>
+        </label>
+        <br>
+        <label for="about">
+          About:
+          <textarea id="about" class="about"></textarea>
         </label>
       </section>
     </div>
@@ -38,6 +48,7 @@
       var state = {
         user: {
           firstName: 'John',
+          about: 'I am a programmer!',
           lastName: 'Doe',
           salary: '2000',
           skills: [
@@ -47,13 +58,17 @@
         }
       };
       var binding = {
-        'user.firstName': '.first-name',
+        'user.firstName': '.first-name, .first-name-2',
         'user.lastName': '.last-name',
+        'user.about': '.about',
         'user.fullName': {
           el: '.full-name',
-          dependent: 'user.firstName, user.lastName',
-          transform: function(value, getter) {
-            return getter('user.firstName') + ' ' + getter('user.lastName');
+          dependent: [
+            'user.firstName',
+            'user.lastName'
+          ],
+          transform: function(value, toGet) {
+            return toGet('user.firstName') + ' ' + toGet('user.lastName');
           }
         },
         'user.salary': {

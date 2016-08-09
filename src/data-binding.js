@@ -1,19 +1,16 @@
 import Set from 'lodash/set';
 import DOM from './dom';
-// import {checkAllDependencies} from './dependencies';
 import {
   isObject,
   isFunction,
+  isArray,
   areEqual,
   clone,
   each
 } from './utils';
 
-// checkAllDependencies();
-
 export default class DataBinder {
   constructor(state = {}, binding = {}, settings = {}) {
-    this.initState = clone(state);
     this.state = clone(state);
     this.binding = clone(binding);
     this.isDebug = settings.isDebug || false;
@@ -30,18 +27,24 @@ export default class DataBinder {
    * Prepare exportable data.
    */
   export() {
-    // @todo exportable data.
-    return '';
+    return JSON.stringify(this.state);
+  }
+
+  /*
+   * Update DOM element by new value.
+   */
+  _updateElement(path, value) {
+    new DOM()
+      .find(this._element(path))
+      .set(value, this._transform(path, value));
   }
 
   /*
    * Apply state for bound elements.
    */
   _applyStateToDOM(state = null) {
-    each(this.binding, key =>
-      new DOM()
-        .find(this._element(key))
-        .set(this._transform(key, this._get(key)))
+    each(this.binding, path =>
+      this._updateElement(path, this._get(path))
     );
   }
 
@@ -68,13 +71,21 @@ export default class DataBinder {
    * Add listeners for changing state (model data).
    */
   _addStateListeners() {
-    const updateElement = (path, value) => {
-      new DOM()
-        .find(this._element(path))
-        .set(this._transform(path, value));
-    };
-    const updateDependencies = path => {
-      // @todo
+    const updateElement = (path, value) =>
+      this._updateElement(path, value);
+    const updateDependencies = updatedPath => {
+      each(this.binding, path => {
+        const dependencies = this._dependencies(path);
+
+        if (isArray(dependencies)) {
+          dependencies.some(value => {
+            if (updatedPath === value) {
+              this._updateElement(path, value);
+              return true;
+            }
+          });
+        }
+      });
     };
 
     each(this.binding, path => {
@@ -99,9 +110,7 @@ export default class DataBinder {
                   updateDependencies(fullPath);
                 }
               },
-              get: () => {
-                return value;
-              }
+              get: () => value
             });
           }
 

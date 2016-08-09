@@ -160,18 +160,19 @@ export default class DOM {
   /*
    * Set data to the element.
    */
-  set(value) {
+  set(value, transformedValue) {
     this._each(el => {
       const dataAttribute = this._getDataAttribute(el);
+      const attachedValue = this._isChangeable(el) ?
+        value :
+        transformedValue;
 
       // 1. html, string
       // 2. array (@todo)
       // 3. object (@todo)
 
-      // @todo if .value no need to apply transform
-
-      if (isString(value) || isNumber(value)) {
-        this[`_${dataAttribute}`](el, value);
+      if (isString(transformedValue) || isNumber(transformedValue)) {
+        this[`_${dataAttribute}`](el, attachedValue);
       }
     });
 

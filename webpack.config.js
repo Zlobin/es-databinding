@@ -26,7 +26,7 @@ if (isProduction) {
 
 module.exports = {
   watch: true,
-  devtool: !isProduction ? 'cheap-source-map' : 'eval',
+  devtool: isProduction ? 'cheap-source-map' : 'eval',
   entry: './src/index.js',
   output: {
     path: path.join(__dirname, 'dist'),
