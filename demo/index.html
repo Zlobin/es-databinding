@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Two way binding</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      FirstName: <b class="first-name"></b><br>
+      LastName: <b class="last-name"></b><br>
+      FullName: <b class="full-name"></b><br>
+      Salary: <b class="salary"></b><br>
+      Favorite skill: <b class="skill-favorite"></b><br>
+
+      <br><br>
+      <section>
+        <label for="firstName">
+          FirstName:
+          <input id="firstName" type="text" class="first-name">
+        </label>
+        <br>
+        <label for="lastName">
+          LastName:
+          <input id="lastName" type="text" class="last-name">
+        </label>
+        <label for="salary">
+          LastName:
+          <input id="salary" type="text" class="salary">
+        </label>
+      </section>
+    </div>
+
+    <script src="../dist/bundle.js"></script>
+    <script>
+      var state = {
+        user: {
+          firstName: 'John',
+          lastName: 'Doe',
+          salary: '2000',
+          skills: [
+            'javascript',
+            'html'
+          ]
+        }
+      };
+      var binding = {
+        'user.firstName': '.first-name',
+        'user.lastName': '.last-name',
+        'user.fullName': {
+          el: '.full-name',
+          dependent: 'user.firstName, user.lastName',
+          transform: function(value, getter) {
+            return getter('user.firstName') + ' ' + getter('user.lastName');
+          }
+        },
+        'user.salary': {
+          el: '.salary',
+          transform: function (value) {
+            return value + ' USD';
+          }
+        },
+        'user.skills.0': '.skill-favorite'
+      };
+
+      var binder = new DataBinder(state, binding);
+
+      // After 3 seconds firstName will be changed.
+      setTimeout(function() {
+        binder.user.firstName = 'Igor';
+      }, 3000);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "name": "es-databinding",
+  "description": "Two way data binding in JavaScript (ES2015)",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "files": [
+    "src",
+    ".babelrc",
+    ".eslintrc",
+    "webpack.config.js"
+  ],
+  "author": {
+    "name": "Eugene Zlobin",
+    "email": "creastar@gmail.com",
+    "web": "https://zlobin.pro/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Zlobin/es-databinding.git"
+  },
+  "keywords": [
+    "2 way data binding",
+    "javascript",
+    "es2015"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lodash.set": "^4.3.1"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.11.4",
+    "babel-core": "^6.13.2",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.13.2",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^1.12.0",
+    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-react": "^6.0.0",
+    "webpack": "^1.13.1"
+  },
+  "engines": {
+    "node": ">=4"
+  }
+}
