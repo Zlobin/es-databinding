@@ -73,6 +73,13 @@ Manual changing state.
 state.user.firstName = 'John';
 ```
 
+Pros:
+1. No setTimeout ot setInterval.
+2. No dependencies.
+3. Small size ~6.5kb in packed, ~2kb gzipped.
+4. Easy to mantain.
+5. ES2015
+
 TODO
 
 1. Add tests.

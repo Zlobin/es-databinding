@@ -31,14 +31,8 @@ export const areEqual = (p1, p2) => {
     }
 
     while (len--) {
-      if (!isArray(p1[len]) && !isArray(p2[len])) {
-        if (p1[len] !== p2[len]) {
-          return false;
-        }
-      } else if (isArray(p1[len]) && isArray(p2[len])) {
-        if (!areEqual(p1[len], p2[len])) {
-          return false;
-        }
+      if (!areEqual(p1[len], p2[len])) {
+        return false;
       }
     }
 
