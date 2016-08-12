@@ -1,15 +1,20 @@
+/* global document, undefined*/
+
 export const doc = document;
 
-const Node = doc.documentElement.firstChild;
+// const Node = doc.documentElement.firstChild;
 const toString = Object.prototype.toString;
 
 export const isObject = obj => toString.call(obj) === '[object Object]';
-export const isDomElement = obj => isObject(obj) && obj.nodeType === Node.ELEMENT_NODE;
+// export const isDomElement = obj => isObject(obj) && obj.nodeType === Node.ELEMENT_NODE;
 export const isString = str => toString.call(str) === '[object String]';
 export const isNumber = num => toString.call(num) === '[object Number]';
+export const isUndefined = obj => obj === undefined;
 export const isArray = Array.isArray;
 export const isNull = obj => obj === null;
+export const isBlank = obj => isUndefined(obj) || isNull(obj);
 export const isFunction = func => toString.call(func) === '[object Function]';
+// export const isObjectLike = obj => isObject(obj) || isArray(obj);
 
 export const clone = obj => Object.assign({}, obj);
 export const each = (obj, callback) => Object
@@ -42,13 +47,8 @@ export const areEqual = (p1, p2) => {
   } else if (isObject(p1) && isObject(p2)) {
     return Object
       .keys(p1)
-      .every(val =>
-        (isObject(p1[val]) && isObject(p2[val])) ||
-        (isArray(p1[val]) && isArray(p2[val])) ?
-          areEqual(p1[val], p2[val]) :
-          p1[val] === p2[val]
-      );
-  } else {
-    return p1 === p2;
+      .every(val => areEqual(p1[val], p2[val]));
   }
+
+  return p1 === p2;
 };

@@ -39,13 +39,13 @@ module.exports = {
   },
   plugins: plugins,
   module: {
-    /* preLoaders: [
+    preLoaders: [
       {
         test: /\.js$/,
         include: path.join(__dirname, 'src'),
         loader: 'eslint-loader'
       }
-    ], */
+    ],
     loaders: [
       {
         test: /\.js$/,

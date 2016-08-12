@@ -1,9 +1,9 @@
-import Set from 'lodash/set';
 import DOM from './dom';
 import {
   isObject,
   isFunction,
   isArray,
+  isBlank,
   areEqual,
   clone,
   each
@@ -42,7 +42,7 @@ export default class DataBinder {
   /*
    * Apply state for bound elements.
    */
-  _applyStateToDOM(state = null) {
+  _applyStateToDOM() {
     each(this.binding, path =>
       this._updateElement(path, this._get(path))
     );
@@ -83,6 +83,8 @@ export default class DataBinder {
               this._updateElement(path, value);
               return true;
             }
+
+            return false;
           });
         }
       });
@@ -102,7 +104,7 @@ export default class DataBinder {
             Object.defineProperty(obj, key, {
               enumerable: true,
               configurable: true,
-              set: function(newValue) {
+              set: function setPropery(newValue) {
                 if (value !== newValue) {
                   value = newValue;
                   this[key] = newValue;
@@ -137,8 +139,24 @@ export default class DataBinder {
    * Set value to state.
    */
   _set(path, value) {
-    // Lodash.set instead.
-    return Set(this.state, path, value);
+    const parts = path.split('.');
+    let obj = this.state;
+
+    while (parts.length > 1) {
+      const name = parts.shift();
+
+      if (Object.prototype.hasOwnProperty.call(obj, name)) {
+        obj = obj[name];
+      } else {
+        obj = obj[name] = {};
+      }
+    }
+
+    if (isBlank(obj)) {
+      obj = {};
+    }
+
+    obj[parts.shift()] = value;
   }
 
   /*

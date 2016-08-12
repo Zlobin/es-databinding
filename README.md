@@ -79,5 +79,4 @@ TODO
 2. Add more examples.
 3. Add middleware pattern into setting value (to validating, for instance).
 4. Add support for path like, 'user.*.state'.
-5. Remove "lodash.set" dependency.
-6. Add benchmarks.
+5. Add benchmarks.

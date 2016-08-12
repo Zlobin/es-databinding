@@ -1,7 +1,7 @@
 {
   "name": "es-databinding",
   "description": "Two way data binding in JavaScript (ES2015)",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "main": "src/index.js",
   "files": [
     "src",
@@ -24,9 +24,7 @@
     "es2015"
   ],
   "license": "MIT",
-  "dependencies": {
-    "lodash.set": "^4.3.1"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.11.4",
     "babel-core": "^6.13.2",

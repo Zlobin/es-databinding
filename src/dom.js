@@ -21,9 +21,11 @@ export default class DOM {
    * Set or get value an attribute from DOM element.
    */
   _eq(el, attribute, value = null) {
+    /* eslint-disable no-param-reassign */
     return isNull(value) ?
       el[attribute] :
       (el[attribute] = value);
+    /* eslint-enable no-param-reassign */
   }
 
   /*
@@ -141,9 +143,9 @@ export default class DOM {
       return 'input';
     } else if (this._hasChangeEvent(el)) {
       return 'change';
-    } else {
-      return null;
     }
+
+    return null;
   }
 
   /*
