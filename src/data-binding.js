@@ -104,7 +104,7 @@ export default class DataBinder {
             Object.defineProperty(obj, key, {
               enumerable: true,
               configurable: true,
-              set: function setPropery(newValue) {
+              set: function setProperty(newValue) {
                 if (value !== newValue) {
                   value = newValue;
                   this[key] = newValue;
