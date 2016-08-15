@@ -24,7 +24,7 @@ export default function elFacade(el) {
     },
 
     /*
-     *
+     * If DOM element is changeable.
      */
     isChangeable() {
       return areEqual(this.dataAttribute(), 'value');
@@ -38,7 +38,7 @@ export default function elFacade(el) {
     },
 
     /*
-     *
+     * If it's multiple select @todo
      */
     isMultipleSelect() {
       return areEqual(el.type, 'select-multiple');
@@ -82,7 +82,7 @@ export default function elFacade(el) {
     },
 
     /*
-     *
+     * Checkbox and radio has checked instead of value.
      */
     valueAttribute() {
       return this.isCheckOn() ?
@@ -91,7 +91,7 @@ export default function elFacade(el) {
     },
 
     /*
-     *
+     * Attribute for getting data.
      */
     getterMethod() {
       return this.isChangeable() ?
@@ -110,10 +110,6 @@ export default function elFacade(el) {
       }
 
       return null;
-    },
-
-    el() {
-      return el.target || el;
     }
   };
 }

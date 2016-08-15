@@ -25,7 +25,7 @@ export default class DataBinder extends ObjectPath {
   }
 
   /*
-   *
+   * Initialisation.
    */
   init() {
     this
@@ -104,6 +104,14 @@ export default class DataBinder extends ObjectPath {
     return this;
   }
 
+  /*
+   * If you're using compatible binding, like
+   * toGet('user.firstName') + ' ' + toGet('user.lastName')
+   * you need to add field which are dependents manually.
+   *
+   * This method takes array of dependencies to check if something
+   * was changed there for further update an dependant.
+   */
   updateDependencies(updatedPath) {
     each(this.binding, path =>
       this
