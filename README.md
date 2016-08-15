@@ -77,7 +77,7 @@ Pros:
 1. No setTimeout ot setInterval.
 2. No dependencies.
 3. Small size ~6.5kb in packed, ~2kb gzipped.
-4. Easy to mantain.
+4. Easy to maintain and to extend.
 5. ES2015
 
 TODO
@@ -85,5 +85,7 @@ TODO
 1. Add tests.
 2. Add more examples.
 3. Add middleware pattern into setting value (to validating, for instance).
-4. Add support for path like, 'user.*.state'.
-5. Add benchmarks.
+4. Add support for path like 'user.*.state'.
+5. Add support for path like 'user.skills[0]', currently only 'user.skills.0'
+6. Implement parse method.
+7. Add benchmarks.
