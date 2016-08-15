@@ -7,6 +7,7 @@ import {
   isEmpty,
   isFunction,
   areEqual,
+  noop,
   clone,
   each,
   defineProperty
@@ -103,32 +104,31 @@ export default class DataBinder extends ObjectPath {
     return this;
   }
 
+  updateDependencies(updatedPath) {
+    each(this.binding, path =>
+      this
+        .dependencies(path)
+        .some(value => {
+          if (areEqual(updatedPath, value)) {
+            this.updateDom(path, value);
+            return true;
+          }
+
+          return false;
+        })
+    );
+  }
+
   /*
    * Add listeners for changing state (model data).
    */
   addStateListeners() {
-    const updateDom = (path, value) =>
-      this.updateDom(path, value);
-    const updateDependencies = updatedPath => {
-      each(this.binding, path =>
-        this
-          .dependencies(path)
-          .some(value => {
-            if (areEqual(updatedPath, value)) {
-              this.updateDom(path, value);
-              return true;
-            }
-
-            return false;
-          })
-      );
-    };
-
     each(this.binding, path => {
       let fullPath = '';
 
       this.forPath(path, (obj, key) => {
-        const delimiter = !isEmpty(fullPath) ? this.delimiter : '';
+        const delimiter = !isEmpty(fullPath) ?
+          this.delimiter : '';
         fullPath += `${delimiter}${key}`;
 
         let value = obj[key];
@@ -136,14 +136,13 @@ export default class DataBinder extends ObjectPath {
           if (!areEqual(value, newValue)) {
             value = newValue;
             this[key] = newValue;
-            updateDom.bind(this)(fullPath, newValue);
-            updateDependencies.bind(this)(fullPath);
+            this.updateDom.bind(this)(fullPath, newValue);
+            this.updateDependencies.bind(this)(fullPath);
           }
         };
-        const getter = () => value;
 
         if (!isObject(value)) {
-          defineProperty(obj, key, setter, getter);
+          defineProperty(obj, key, setter, () => value);
         }
 
         return obj[key];
@@ -183,7 +182,7 @@ export default class DataBinder extends ObjectPath {
 
     return isObject(element) && isFunction(element.callback) ?
       element.callback(el, value) :
-      () => {};
+      noop;
   }
 
   /*
