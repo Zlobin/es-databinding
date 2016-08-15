@@ -21,10 +21,6 @@ export default class DataBinder extends ObjectPath {
 
     this.state = clonedState;
     this.binding = clonedBinding;
-
-    this.init();
-
-    return this.state;
   }
 
   /*
@@ -37,6 +33,8 @@ export default class DataBinder extends ObjectPath {
       .addStateListeners()
       .applyStateToDOM()
       .addDOMListeners();
+
+    return this.state;
   }
 
   /*

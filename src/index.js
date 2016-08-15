@@ -1,1 +1,1 @@
-module.exports = require('./interface').default;
+module.exports = require('./provider').default;

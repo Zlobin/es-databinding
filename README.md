@@ -59,7 +59,7 @@ var binding = {
   'cart.total': '#cart-total'
 };
 
-var state = DataBinder(
+var binder = DataBinder(
   {
     user: userState,
     cart: cartState
@@ -70,7 +70,12 @@ var state = DataBinder(
 
 Manual changing state.
 ```js
-state.user.firstName = 'John';
+binder.state.user.firstName = 'John';
+```
+
+Export
+```
+binder.export();
 ```
 
 Pros:
