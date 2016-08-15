@@ -59,7 +59,7 @@ var binding = {
   'cart.total': '#cart-total'
 };
 
-var state = new DataBinder(
+var state = DataBinder(
   {
     user: userState,
     cart: cartState

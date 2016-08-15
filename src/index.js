@@ -1,1 +1,1 @@
-module.exports = require('./data_binding').default;
+module.exports = require('./interface').default;
