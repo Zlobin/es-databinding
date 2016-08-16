@@ -87,10 +87,9 @@ Pros:
 
 TODO
 
-1. Add tests.
+1. Add more tests.
 2. Add more examples.
 3. Add middleware pattern into setting value (to validating, for instance).
 4. Add support for path like 'user.*.state'.
-5. Add support for path like 'user.skills[0]', currently only 'user.skills.0'
-6. Implement parse method.
-7. Add benchmarks.
+5. Implement parse method.
+6. Add benchmarks.
