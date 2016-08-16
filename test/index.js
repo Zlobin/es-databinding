@@ -1,6 +1,7 @@
 import expect from 'expect';
 
 import ObjectPath from '../src/utils/object_path';
+import exportFn from '../src/utils/export';
 // import DOM from '../src/dom/';
 // import DataBinder from '../src/data_binding';
 
@@ -52,14 +53,32 @@ describe('1. ObjectPath', function() {
     expect(objectPath.get(`user${_d_}skills[0]`)).toEqual('es');
     objectPath.set(`user${_d_}skills[0]`, 'es2015');
     expect(objectPath.get(`user${_d_}skills[0]`)).toEqual('es2015');
-
   });
 });
 
-describe('2. Dom', function() {
+describe('2. exportFn', function() {
+  const state = {
+    user: {
+      firstName: 'John',
+      lastName: 'Doe',
+      skills: [
+        'js',
+        'css',
+        'html'
+      ]
+    }
+  };
+
+  it('2.1: "export" method should work properly', () => {
+    expect(exportFn(state))
+      .toEqual('{"user":{"firstName":"John","lastName":"Doe","skills":["js","css","html"]}}');
+  });
+});
+
+describe('3. Dom', function() {
   // @todo
 });
 
-describe('3. DataBinder', function() {
+describe('4. DataBinder', function() {
   // @todo
 });
