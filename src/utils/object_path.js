@@ -3,8 +3,9 @@ import {
   hasProperty
 } from './lang';
 
-// @todo replace [0], [1] to .0 .1 etc.
-const pathResolver = path => path;
+// replace [0], [1] to .0 .1 etc.
+const pathResolver = path => path
+  .replace(/\[(\d)\]/, '.$1');
 
 export default class ObjectPath {
   constructor(obj = {}, delimiter = '.') {

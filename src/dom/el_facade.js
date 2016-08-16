@@ -3,9 +3,6 @@ import {
   has
 } from '../utils/lang';
 
-// const Node = doc.documentElement.firstChild;
-// const isDomElement = obj => isObject(obj) && obj.nodeType === Node.ELEMENT_NODE;
-
 export default function elFacade(el) {
   return {
     /*

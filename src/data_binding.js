@@ -1,4 +1,4 @@
-import DOM from './dom/dom';
+import DOM from './dom/';
 import exportFn from './utils/export';
 import ObjectPath from './utils/object_path';
 

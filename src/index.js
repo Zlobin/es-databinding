@@ -1,1 +1,1 @@
-module.exports = require('./provider').default;
+module.exports = require('./proxy').default;
