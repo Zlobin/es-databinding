@@ -1,7 +1,7 @@
 {
   "name": "es-databinding",
   "description": "Two way data binding in JavaScript (ES2015)",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "main": "src/index.js",
   "files": [
     "src",
@@ -21,7 +21,9 @@
   "keywords": [
     "2 way data binding",
     "javascript",
-    "es2015"
+    "es2015",
+    "two way data-binding",
+    "data binding"
   ],
   "license": "MIT",
   "dependencies": {},
@@ -30,14 +32,19 @@
     "babel-core": "^6.13.2",
     "babel-loader": "^6.2.4",
     "babel-preset-es2015": "^6.13.2",
-    "eslint": "^3.3.0",
+    "eslint": "^3.3.1",
     "eslint-config-airbnb": "^10.0.1",
     "eslint-loader": "^1.5.0",
     "eslint-plugin-import": "^1.13.0",
-    "eslint-plugin-jsx-a11y": "^2.0.1",
+    "eslint-plugin-jsx-a11y": "^2.1.0",
+    "expect": "^1.20.2",
+    "mocha": "^3.0.2",
     "webpack": "^1.13.1"
   },
   "engines": {
     "node": ">=4"
+  },
+  "scripts": {
+    "test": "mocha --compilers js:babel-core/register"
   }
 }
