@@ -107,6 +107,10 @@ export default function elFacade(el) {
       }
 
       return null;
+    },
+
+    el() {
+      return el.target || el;
     }
   };
 }
