@@ -31,7 +31,7 @@ export default class ObjectPath {
    *  'user.location.city'
    *  'user.skills'
    *  'user.skills.0'
-   *  'user.skills[0]' @todo
+   *  'user.skills[0]'
    */
   get(path) {
     return this

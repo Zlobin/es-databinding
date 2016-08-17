@@ -37,7 +37,7 @@ describe('1. ObjectPath', function() {
     expect(objectPath.get(`user${_d_}lastName`)).toEqual('Doe');
     expect(objectPath.get(`user${_d_}skills${_d_}0`)).toEqual('js');
     expect(objectPath.get(`user${_d_}skills[0]`)).toEqual('js');
-    expect(objectPath.get(`user${_d_}skills.2`)).toEqual('html');
+    expect(objectPath.get(`user${_d_}skills${_d_}2`)).toEqual('html');
     expect(objectPath.get(`user${_d_}skills[2]`)).toEqual('html');
   });
 
