@@ -6,8 +6,10 @@ es-databinding (DataBinder) - two-way data binding library.
 
 ## Installation
 
-`npm i --save es-databinding`<br>
-or<br>
+`npm i --save es-databinding`
+
+## Building from sources
+
 `git clone https://github.com/Zlobin/es-databinding.git`<br>
 `cd es-databinding && npm i && webpack`<br>
 
