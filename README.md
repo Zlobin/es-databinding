@@ -1,4 +1,6 @@
-# Two way data binding in JavaScript [![Build Status](https://travis-ci.org/Zlobin/es-databinding.png?branch=master)](https://travis-ci.org/Zlobin/es-databinding)
+# Two way data binding in JavaScript 
+[![Build Status](https://travis-ci.org/Zlobin/es-databinding.png?branch=master)](https://travis-ci.org/Zlobin/es-databinding)
+[![Code Climate](https://codeclimate.com/github/Zlobin/es-databinding.svg)](https://codeclimate.com/github/Zlobin/es-databinding)
 
 ## Synopsis
 
