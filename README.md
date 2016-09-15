@@ -92,6 +92,7 @@ TODO
 1. Add more tests.
 2. Add more examples.
 3. Add middleware pattern into setting value (to validating, for instance).
-4. Add support for path like 'user.*.state'.
-5. Implement parse method.
-6. Add benchmarks.
+4. Add event when data were pasted (ctrl+v or by context-menu).
+5. Add support for path like 'user.*.state'.
+6. Implement parse method.
+7. Add benchmarks.
